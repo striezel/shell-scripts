@@ -20,6 +20,7 @@
 # exit status / error codes
 E_INVALID_ARGS=1 # invalid or insufficient arguments given
 E_NO_CRUSHER=2   # pngcrush not found
+E_CHOWN_FAILED=3 # unable to set proper owner and group of file
 
 usage_info ()
 {
@@ -166,6 +167,12 @@ do
       processed+=1
       if [[ -f "$currentFile$suffix" ]]
       then
+        chown --reference="$currentFile" "$currentFile$suffix" &>/dev/null
+        if [[ $? != 0 ]]
+        then
+          echo "Could not set proper owner +  group for \"$currentFile$suffix\"!"
+          exit $E_CHOWN_FAILED
+        fi
         mv "$currentFile$suffix" "$currentFile"
         echo "Crushed file $currentFile"
       fi
