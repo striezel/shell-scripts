@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #  crusher.sh - utility script to ease use of pngcrush for multiple PNG files
-#               version: 0.2  (2013-03-17)
+#               version: 0.3  (2013-03-21)
 #               For the most up-to-date version check
 #                 <https://github.com/Thoronador/shell-scripts>.
 #
@@ -22,13 +22,40 @@
 
 
 # exit status / error codes
-E_INVALID_ARGS=1 # invalid or insufficient arguments given
-E_NO_CRUSHER=2   # pngcrush not found
-E_CHOWN_FAILED=3 # unable to set proper owner and group of file
+E_INVALID_ARGS=1       # invalid or insufficient arguments given
+E_NO_CRUSHER=2         # pngcrush not found
+E_CHOWN_FAILED=3       # unable to set proper owner and group of file
+E_INVALID_DIRECTORY=4  #given directory does not exist
 
+#default value for limit
+cDefaultLimit=10
+declare -i cDefaultLimit
+
+#shows help/usage message for scripts
 usage_info ()
 {
   echo "Usage: `basename $0` [options] DIRECTORY"
+  echo
+  echo "  options:"
+  echo "    --limit <number>, -l <number>"
+  echo "        Process no more than <number> PNG images."
+  echo "        The default value is $cDefaultLimit."
+  echo "    --help, -?, /?"
+  echo "        Show this message"
+  echo "    --license, --licence"
+  echo "        Print a short (as in 'shorter than the license') notice about"
+  echo "        the script's license."
+}
+
+error_codes()
+{
+  echo "Known exit codes of `basename $0`:"
+  echo
+  echo "    0: no error"
+  echo "    $E_INVALID_ARGS: invalid or insufficient arguments"
+  echo "    $E_NO_CRUSHER: pngcrush not found"
+  echo "    $E_CHOWN_FAILED: unable to set proper owner and group of file"
+  echo "    $E_INVALID_DIRECTORY: given directory does not exist"
 }
 
 # shows GPL3 license, if found, or short note otherwise
@@ -88,7 +115,7 @@ fi
 
 i=1
 declare -i i #declare i as integer
-limit=10
+limit=$cDefaultLimit
 declare -i limit
 directory=''
 
@@ -105,6 +132,10 @@ do
     # show help
     usage|"--help"|"-?"|"/?")
         usage_info
+        exit 0
+    ;;
+    "--error"|"--error-codes"|"--exit-codes"|"-e")
+        error_codes
         exit 0
     ;;
     "--limit"|"-l")
@@ -133,6 +164,12 @@ do
         exit $E_INVALID_ARGS
       fi
       directory=${!i}
+      #check if directory does not exist
+      if [[ ! -d $directory ]]
+      then
+        echo "Error: \"$directory\" is not a directory!"
+        exit $E_INVALID_DIRECTORY
+      fi
       echo "Info: directory was set to \"$directory\"."
     ;;
   esac
@@ -174,7 +211,7 @@ do
         chown --reference="$currentFile" "$currentFile$suffix" &>/dev/null
         if [[ $? != 0 ]]
         then
-          echo "Could not set proper owner +  group for \"$currentFile$suffix\"!"
+          echo "Could not set proper owner + group for \"$currentFile$suffix\"!"
           exit $E_CHOWN_FAILED
         fi
         mv "$currentFile$suffix" "$currentFile"
@@ -184,4 +221,8 @@ do
   fi
 done
 
+if [[ $processed -ge $limit ]]
+then
+  echo "Info: stopped processing, because limit ($limit) was reached."
+fi
 echo "Done. Processed $processed PNG files."
