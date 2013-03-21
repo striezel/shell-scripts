@@ -1,6 +1,10 @@
 #!/bin/bash
 
-#  utility script to ease use of pngcrush for multiple PNG files
+#  crusher.sh - utility script to ease use of pngcrush for multiple PNG files
+#               version: 0.2  (2013-03-17)
+#               For the most up-to-date version check
+#                 <https://github.com/Thoronador/shell-scripts>.
+#
 #  Copyright (C) 2013  Thoronador
 #
 #  This program is free software: you can redistribute it and/or modify
