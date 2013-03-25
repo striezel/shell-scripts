@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #  crusher.sh - utility script to ease use of pngcrush for multiple PNG files
-#               version: 0.3  (2013-03-21)
+#               version: 0.4  (2013-03-25)
 #               For the most up-to-date version check
 #                 <https://github.com/Thoronador/shell-scripts>.
 #
@@ -196,6 +196,11 @@ declare -i processed
 files="$directory*.png"
 suffix="_crushed"
 
+orig_size=0
+declare -i orig_size
+new_size=0
+declare -i new_size
+
 echo "Crushing files. This may take a while..."
 for currentFile in $files
 do
@@ -214,6 +219,8 @@ do
           echo "Could not set proper owner + group for \"$currentFile$suffix\"!"
           exit $E_CHOWN_FAILED
         fi
+        orig_size+=`stat --print="%s" "$currentFile"`
+        new_size+=`stat --print="%s" "$currentFile$suffix"`
         mv "$currentFile$suffix" "$currentFile"
         echo "Crushed file $currentFile"
       fi
@@ -221,8 +228,20 @@ do
   fi
 done
 
+# show info / size statistics
 if [[ $processed -ge $limit ]]
 then
   echo "Info: stopped processing, because limit ($limit) was reached."
 fi
 echo "Done. Processed $processed PNG files."
+echo "Total size of processed files before crushing: $orig_size bytes"
+echo "Total size of processed files after  crushing: $new_size bytes"
+let "saved=$orig_size-$new_size"
+if [[ $orig_size -ne 0 ]]
+then
+  let "percentage=($saved*100)/$orig_size"
+else
+  percentage=0
+fi
+echo "Saved disk space: $saved bytes ($percentage%)"
+exit 0
