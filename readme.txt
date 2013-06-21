@@ -34,3 +34,6 @@ Script files:
                   PNG files in a certain directory. It invokes pngcrush
                   to decrease the file size of all PNG files in a given
                   directory.
+
+     git-author-lines.sh - A utility script to get the number of lines changed
+                           by a given author in a git repository
