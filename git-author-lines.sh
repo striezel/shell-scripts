@@ -2,7 +2,7 @@
 
 #  git-author-lines.sh - utility script to get the number of lines changed by
 #                        a given author in a git repository
-#                        version: 0.1  (2013-06-22)
+#                        version: 0.2  (2013-11-04)
 #                        For the most up-to-date version check
 #                        <https://github.com/Thoronador/shell-scripts>.
 #
@@ -112,7 +112,7 @@ do
   # i-th parameter is ${!i}
   case ${!i} in
     # show license
-    license|licence)
+    "--license"|"--licence")
         license_info
         exit 0
     ;;

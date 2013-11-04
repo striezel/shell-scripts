@@ -1,1 +1,1 @@
-edfaa1581e3d40e5769cb955e79637763a993746  git-author-lines.sh  0.1  2013-06-22
+20c9be040638bc4104005b2a2d3bd371fdae2fce  git-author-lines.sh  0.2  2013-11-04
