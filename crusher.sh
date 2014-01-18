@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #  crusher.sh - utility script to ease use of pngcrush for multiple PNG files
-#               version: 0.5  (2014-01-19)
+#               version: 0.6  (2014-01-19)
 #               For the most up-to-date version check
 #                 <https://github.com/Thoronador/shell-scripts>.
 #
@@ -41,12 +41,12 @@ usage_info ()
   echo "        Process no more than <number> PNG images."
   echo "        The default value is $cDefaultLimit."
   echo "    --help, -?, /?"
-  echo "        Show this message"
+  echo "        Show this message and exit."
   echo "    --license, --licence"
   echo "        Print a short (as in 'shorter than the license') notice about"
-  echo "        the script's license."
+  echo "        the script's license and exit."
   echo "    --exit-codes"
-  echo "        Show a list of known exit codes of the script."
+  echo "        Show a list of known exit codes of the script and exit."
 }
 
 error_codes()
