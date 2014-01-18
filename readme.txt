@@ -33,6 +33,10 @@ Script files:
     git-author-lines.sh - A utility script to get the number of lines changed
                           by a given author in a git repository
 
+    sql-dump-extract-db.txt - A utility script to extract the SQL statements
+                              for one database from an SQL dump of multiple
+                              databases
+
   Special purpose script:
 
     update.sh   - That is the update script that can be used to (you guessed
