@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #  crusher.sh - utility script to ease use of pngcrush for multiple PNG files
-#               version: 0.4  (2013-03-25)
+#               version: 0.5  (2014-01-19)
 #               For the most up-to-date version check
 #                 <https://github.com/Thoronador/shell-scripts>.
 #
-#  Copyright (C) 2013  Thoronador
+#  Copyright (C) 2013, 2014  Thoronador
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -45,6 +45,8 @@ usage_info ()
   echo "    --license, --licence"
   echo "        Print a short (as in 'shorter than the license') notice about"
   echo "        the script's license."
+  echo "    --exit-codes"
+  echo "        Show a list of known exit codes of the script."
 }
 
 error_codes()
@@ -67,7 +69,7 @@ license_info()
   #  less $gpl3
   #else
     echo "utility script to ease use of pngcrush for multiple PNG files"
-    echo "Copyright (C) 2013  Thoronador"
+    echo "Copyright (C) 2013, 2014  Thoronador"
     echo
     echo "This program is free software: you can redistribute it and/or modify"
     echo "it under the terms of the GNU General Public License as published by"
@@ -193,6 +195,7 @@ fi
 #process stuff
 processed=0
 declare -i processed
+# get list of .png files
 files="$directory*.png"
 suffix="_crushed"
 

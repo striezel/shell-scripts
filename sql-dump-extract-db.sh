@@ -3,7 +3,7 @@
 #  sql-dump-extract-db.sh - utility script to extract the SQL statements
 #                           for one database from an SQL dump of multiple
 #                           databases
-#                           version: 0.1  (2014-01-18)
+#                           version: 0.2  (2014-01-19)
 #                           For the most up-to-date version check
 #                             <https://github.com/Thoronador/shell-scripts>.
 #
@@ -35,16 +35,27 @@ E_NO_DATA=6              # script could not find any data for the given DB
 #shows help/usage message for scripts
 usage_info ()
 {
-  echo "Usage: `basename $0` db_name long_dump.sql one_db_only.sql"
+  echo "Usage: `basename $0` [options] DB_NAME SOURCE_DUMP OUTPUT_DUMP"
   echo
   echo "  options:"
   echo "    --help, -?, /?"
-  echo "        Show this message"
+  echo "        Show this message and exit"
   echo "    --license, --licence"
   echo "        Print a short (as in 'shorter than the license') notice about"
-  echo "        the script's license."
+  echo "        the script's license and exit."
   echo "    --exit-codes"
-  echo "        Show a list of known exit codes of the script."
+  echo "        Show a list of known exit codes of the script and exit."
+  echo
+  echo "  DB_NAME"
+  echo "      name of the database that shall be extracted from the dump"
+  echo "  SOURCE_DUMP"
+  echo "      name of the (longer) SQL dump to extract from"
+  echo "  OUTPUT_DUMP"
+  echo "      name of the destination file that will hold all extracted statements"
+  echo "      (will be created by the script)"
+  echo
+  echo "  Example:"
+  echo "    `basename $0` db_foo long_dump.sql db_foo_only.sql"
 }
 
 error_codes()

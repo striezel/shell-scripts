@@ -2,11 +2,11 @@
 
 #  git-author-lines.sh - utility script to get the number of lines changed by
 #                        a given author in a git repository
-#                        version: 0.2  (2013-11-04)
+#                        version: 0.3  (2014-01-19)
 #                        For the most up-to-date version check
 #                        <https://github.com/Thoronador/shell-scripts>.
 #
-#  Copyright (C) 2013  Thoronador
+#  Copyright (C) 2013, 2014  Thoronador
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -33,10 +33,12 @@ usage_info ()
   echo
   echo "  options:"
   echo "    --help, -?, /?"
-  echo "        Show this message"
+  echo "        Show this message and exit"
   echo "    --license, --licence"
   echo "        Print a short (as in 'shorter than the license') notice about"
-  echo "        the script's license."
+  echo "        the script's license and exit."
+  echo "    --exit-codes"
+  echo "        Show a list of known exit codes of the script and exit."
   echo
   echo "    AUTHOR"
   echo "        name of the author whose commits shall be counted"
@@ -57,7 +59,7 @@ license_info()
 {
   echo "utility script to get the number of lines changed by a given author"
   echo " in a git repository"
-  echo "Copyright (C) 2013  Thoronador"
+  echo "Copyright (C) 2013, 2014  Thoronador"
   echo
   echo "This program is free software: you can redistribute it and/or modify"
   echo "it under the terms of the GNU General Public License as published by"
