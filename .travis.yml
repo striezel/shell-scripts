@@ -1,0 +1,7 @@
+# In Travis-CI there is no specific language for Bash, so we use C++ instead.
+# Every environment should have Bash and do the trick.
+language: cpp
+sudo: false
+script: ./continuous-integration/bashlint.sh
+notifications:
+  email: false
