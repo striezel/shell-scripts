@@ -23,7 +23,7 @@ Script files:
                       script. (See information below.)
 
 
-  Currently only one basic script is available in the repository:
+  Currently three basic scripts are available in the repository:
 
     crusher.sh - A utility script to ease use of pngcrush for multiple
                  PNG files in a certain directory. It invokes pngcrush
