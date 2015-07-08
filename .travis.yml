@@ -2,6 +2,10 @@
 # Every environment should have Bash and do the trick.
 language: cpp
 sudo: false
-script: ./continuous-integration/bashlint.sh
+script:
+  - ./continuous-integration/bashlint.sh
+  - ./continuous-integration/update-check-no-op.sh
+  - ./continuous-integration/update-check-forced-update.sh
+  - echo "All tests passed. Have a nice day."
 notifications:
   email: false
