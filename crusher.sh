@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #  crusher.sh - utility script to ease use of pngcrush for multiple PNG files
-#               version: 0.6  (2014-01-19)
+#               version: 0.7  (2015-07-09)
 #               For the most up-to-date version check
 #                 <https://github.com/Thoronador/shell-scripts>.
 #
@@ -34,7 +34,7 @@ declare -i cDefaultLimit
 #shows help/usage message for scripts
 usage_info ()
 {
-  echo "Usage: `basename $0` [options] DIRECTORY"
+  echo "Usage: $(basename "$0") [options] DIRECTORY"
   echo
   echo "  options:"
   echo "    --limit <number>, -l <number>"
@@ -51,7 +51,7 @@ usage_info ()
 
 error_codes()
 {
-  echo "Known exit codes of `basename $0`:"
+  echo "Known exit codes of $(basename "$0"):"
   echo
   echo "    0: no error"
   echo "    $E_INVALID_ARGS: invalid or insufficient arguments"
@@ -92,14 +92,14 @@ crusher=/usr/bin/pngcrush
 # check for presence of pngcrush, before we proceed
 if [[ ! -f $crusher ]]
 then
-  echo "`basename $0`: $crusher not found!"
+  echo "$(basename "$0"): $crusher not found!"
   echo "Try to install pngcrush via apt-get install pngcrush."
   exit $E_NO_CRUSHER
 fi
 
 if [[ ! -x $crusher ]]
 then
-  echo "`basename $0`: $crusher is not executable!"
+  echo "$(basename "$0"): $crusher is not executable!"
   exit $E_NO_CRUSHER
 fi
 
@@ -109,7 +109,7 @@ numargs=$#
 declare -i numargs #declare numargs as integer
 
 #Script needs at least one argument (the directory) to work.
-if [[ numargs -eq 0 ]]
+if [[ $numargs -eq 0 ]]
 then
   usage_info
   exit $E_INVALID_ARGS
@@ -145,7 +145,7 @@ do
       let n=i+1
       if [[ $n -gt $numargs ]]
       then
-        echo -n "`basename $0`: Not enough parameters! "
+        echo -n "$(basename "$0"): Not enough parameters! "
         echo    "You need to give a positive number after --limit!"
         exit $E_INVALID_ARGS
       fi
@@ -212,7 +212,7 @@ do
     if [[ $processed -lt $limit  && ! -e "$currentFile$suffix" ]]
     then
       #ready to crush
-      $crusher -oldtimestamp -reduce -m 0 $currentFile $currentFile$suffix &>/dev/null
+      $crusher -oldtimestamp -reduce -m 0 "$currentFile" "$currentFile$suffix" &>/dev/null
       processed+=1
       if [[ -f "$currentFile$suffix" ]]
       then
@@ -222,8 +222,8 @@ do
           echo "Could not set proper owner + group for \"$currentFile$suffix\"!"
           exit $E_CHOWN_FAILED
         fi
-        orig_size+=`stat --print="%s" "$currentFile"`
-        new_size+=`stat --print="%s" "$currentFile$suffix"`
+        orig_size+=$(stat --print="%s" "$currentFile")
+        new_size+=$(stat --print="%s" "$currentFile$suffix")
         mv "$currentFile$suffix" "$currentFile"
         echo "Crushed file $currentFile"
       fi
