@@ -24,7 +24,7 @@ echo
 echo
 
 # find all .sh files and run them through Bash's syntax check
-find ./ -name '*.sh' | xargs -i bash -n {}
+find ./ -name '*.sh' -print0 | xargs -0 -i bash -n {}
 if [[ $? -ne 0 ]]
 then
   echo "Some scripts contain syntax errors!"

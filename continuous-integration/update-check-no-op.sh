@@ -22,7 +22,7 @@
 TMP_FILE=$(mktemp --tmpdir updatecheck.XXXXXX)
 # check update of crusher.sh
 ./update.sh crusher.sh > "$TMP_FILE"
-LINES=$(grep --fixed-strings "You already have the latest version" "$TMP_FILE" | wc -l)
+LINES=$(grep -c --fixed-strings "You already have the latest version" "$TMP_FILE")
 if [[ $LINES -ne 1 ]]
 then
   echo "The no-op update for crusher.sh failed!"
@@ -33,7 +33,7 @@ echo "Info: No-op update for crusher.sh succeeded."
 
 # check update of git-author-lines.sh
 ./update.sh git-author-lines.sh > "$TMP_FILE"
-LINES=$(grep --fixed-strings "You already have the latest version" "$TMP_FILE" | wc -l)
+LINES=$(grep -c --fixed-strings "You already have the latest version" "$TMP_FILE")
 if [[ $LINES -ne 1 ]]
 then
   echo "The no-op update for git-author-lines.sh failed!"
@@ -44,7 +44,7 @@ echo "Info: No-op update for git-author-lines.sh succeeded."
 
 # check update of sql-dump-extract-db.sh
 ./update.sh sql-dump-extract-db.sh > "$TMP_FILE"
-LINES=$(grep --fixed-strings "You already have the latest version" "$TMP_FILE" | wc -l)
+LINES=$(grep -c --fixed-strings "You already have the latest version" "$TMP_FILE")
 if [[ $LINES -ne 1 ]]
 then
   echo "The no-op update for sql-dump-extract-db.sh failed!"

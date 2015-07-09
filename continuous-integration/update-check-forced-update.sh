@@ -23,7 +23,7 @@ TMP_FILE=$(mktemp --tmpdir updatecheck.XXXXXX)
 # check update of crusher.sh
 echo "This should not be here." >> crusher.sh
 ./update.sh crusher.sh > "$TMP_FILE"
-LINES=$(grep --fixed-strings "Copying latest version of" "$TMP_FILE" | wc -l)
+LINES=$(grep -c --fixed-strings "Copying latest version of" "$TMP_FILE")
 if [[ $LINES -ne 1 ]]
 then
   echo "The forced update for crusher.sh failed!"
@@ -35,7 +35,7 @@ echo "Info: The update for crusher.sh succeeded."
 # check update of git-author-lines.sh
 echo "This should not be here." >> git-author-lines.sh
 ./update.sh git-author-lines.sh > "$TMP_FILE"
-LINES=$(grep --fixed-strings "Copying latest version of" "$TMP_FILE" | wc -l)
+LINES=$(grep -c --fixed-strings "Copying latest version of" "$TMP_FILE")
 if [[ $LINES -ne 1 ]]
 then
   echo "The forced update for git-author-lines.sh failed!"
@@ -47,7 +47,7 @@ echo "Info: The update for git-author-lines.sh succeeded."
 # check update of sql-dump-extract-db.sh
 echo "This should not be here." >> sql-dump-extract-db.sh
 ./update.sh sql-dump-extract-db.sh > "$TMP_FILE"
-LINES=$(grep --fixed-strings "Copying latest version of" "$TMP_FILE" | wc -l)
+LINES=$(grep -c --fixed-strings "Copying latest version of" "$TMP_FILE")
 if [[ $LINES -ne 1 ]]
 then
   echo "The forced update for sql-dump-extract-db.sh failed!"
