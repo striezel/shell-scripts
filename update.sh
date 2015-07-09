@@ -75,9 +75,9 @@ update_script()
   fi
 
   # create temporary directory (downloaded files will be there)
-  local tmp_dir=`mktemp --directory`
+  local tmp_dir=$(mktemp --directory)
   echo -n "Checking latest version of $to_update... "
-  local version_file="version-`basename "$to_update" .sh`.txt"
+  local version_file="version-$(basename "$to_update" .sh).txt"
   wget --quiet --no-cookies --no-http-keep-alive -O "$tmp_dir/$version_file" "$location_latest_base/$version_file"
   local wget_exit=$?
   if [[ $wget_exit -ne 0 ]]
@@ -96,15 +96,15 @@ update_script()
   echo "OK"
 
   # extract version data from file
-  local latest_hash=`awk ' { print $1 } ' "$tmp_dir/$version_file"`
-  local latest_file=`awk ' { print $2 } ' "$tmp_dir/$version_file"`
-  local latest_version=`awk ' { print $3 } ' "$tmp_dir/$version_file"`
-  local latest_date=`awk ' { print $4 } ' "$tmp_dir/$version_file"`
+  local latest_hash=$(awk ' { print $1 } ' "$tmp_dir/$version_file")
+  local latest_file=$(awk ' { print $2 } ' "$tmp_dir/$version_file")
+  local latest_version=$(awk ' { print $3 } ' "$tmp_dir/$version_file")
+  local latest_date=$(awk ' { print $4 } ' "$tmp_dir/$version_file")
   rm "$tmp_dir/$version_file"
   echo "Info: latest version of $latest_file is $latest_version of $latest_date."
 
   # get current file's hash and compare with latest file
-  local current_hash=`sha1sum "./$to_update"`
+  local current_hash=$(sha1sum "./$to_update")
   current_hash=${current_hash:0:40}
   if [[ $latest_hash = $current_hash ]]
   then
@@ -136,7 +136,7 @@ update_script()
       echo "$to_update already exists, but it is not a regular file! Aborting."
       exit $E_FILE_ERROR
     fi
-    download_hash=`sha1sum "$tmp_dir/$to_update"`
+    download_hash=$(sha1sum "$tmp_dir/$to_update")
     download_hash=${download_hash:0:40}
     if [[ $latest_hash != $download_hash ]]
     then
@@ -159,12 +159,12 @@ update_script()
 # update requested?
 if [[ ! -z $1 ]]
 then
-  to_up=`basename $1`
-  update_script $to_up
+  to_up=$(basename "$1")
+  update_script "$to_up"
 else
   echo "Nothing do do here, you didn't specify a script file that should be updated."
   echo "If you want to update a script, type"
-  echo "    ./`basename $0` script-file.sh"
+  echo "    ./$(basename "$0") script-file.sh"
   echo "where script-files.sh has to be replaced by the script's name."
 fi
 exit 0
