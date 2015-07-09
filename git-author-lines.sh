@@ -2,11 +2,11 @@
 
 #  git-author-lines.sh - utility script to get the number of lines changed by
 #                        a given author in a git repository
-#                        version: 0.3  (2014-01-19)
+#                        version: 0.4  (2015-07-09)
 #                        For the most up-to-date version check
 #                        <https://github.com/Thoronador/shell-scripts>.
 #
-#  Copyright (C) 2013, 2014  Thoronador
+#  Copyright (C) 2013, 2014, 2015  Thoronador
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ E_NO_REPOSITORY=3 #not a git repository
 #shows help/usage message for scripts
 usage_info ()
 {
-  echo "Usage: `basename $0` [options] AUTHOR"
+  echo "Usage: $(basename "$0") [options] AUTHOR"
   echo
   echo "  options:"
   echo "    --help, -?, /?"
@@ -46,7 +46,7 @@ usage_info ()
 
 error_codes()
 {
-  echo "Known exit codes of `basename $0`:"
+  echo "Known exit codes of $(basename "$0"):"
   echo
   echo "    0: no error"
   echo "    $E_INVALID_ARGS: invalid or insufficient arguments"
@@ -81,14 +81,14 @@ git=/usr/bin/git
 # check for presence of git, before we proceed
 if [[ ! -f $git ]]
 then
-  echo "`basename $0`: git not found!"
+  echo "$(basename "$0"): git not found!"
   echo "Try to install git via apt-get install git."
   exit $E_NO_GIT
 fi
 
 if [[ ! -x $git ]]
 then
-  echo "`basename $0`: $git is not executable!"
+  echo "$(basename "$0"): $git is not executable!"
   exit $E_NO_GIT
 fi
 
@@ -96,7 +96,7 @@ numargs=$#
 declare -i numargs #declare numargs as integer
 
 #Script needs at least one argument (the author) to work.
-if [[ numargs -eq 0 ]]
+if [[ $numargs -eq 0 ]]
 then
   usage_info
   exit $E_INVALID_ARGS
@@ -155,7 +155,7 @@ then
   exit $E_NO_REPOSITORY
 fi
 
-added=`$git log --oneline --pretty=tformat: --numstat --author="$author" | awk ' { print $1 } '`
+added=$($git log --oneline --pretty=tformat: --numstat --author="$author" | awk ' { print $1 } ')
 added_lines=0
 declare -i added_lines #declare added_lines as integer
 for count in $added
@@ -168,7 +168,7 @@ do
   fi
 done
 
-removed=`$git log --oneline --pretty=tformat: --numstat --author="$author" | awk ' { print $2 } '`
+removed=$($git log --oneline --pretty=tformat: --numstat --author="$author" | awk ' { print $2 } ')
 removed_lines=0
 declare -i removed_lines #declare removed_lines as integer
 for count in $removed
