@@ -2,7 +2,7 @@
 
 #  bashlint.sh - script to check the syntax of other Bash scripts
 #
-#  Copyright (C) 2015  Thoronador
+#  Copyright (C) 2015  Dirk Stolle
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by

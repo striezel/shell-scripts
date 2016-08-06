@@ -3,7 +3,7 @@
 #  update-check-forced-update.sh - script to check the update mechanism of
 #                                  update.sh for outdated scripts
 #
-#  Copyright (C) 2015  Thoronador
+#  Copyright (C) 2015  Dirk Stolle
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
