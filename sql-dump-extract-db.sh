@@ -3,11 +3,11 @@
 #  sql-dump-extract-db.sh - utility script to extract the SQL statements
 #                           for one database from an SQL dump of multiple
 #                           databases
-#                           version: 0.3  (2015-07-09)
+#                           version: 0.3.1  (2016-08-06)
 #                           For the most up-to-date version check
-#                             <https://github.com/Thoronador/shell-scripts>.
+#                             <https://github.com/striezel/shell-scripts>.
 #
-#  Copyright (C) 2014, 2015  Thoronador
+#  Copyright (C) 2014, 2015  Dirk Stolle
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -76,7 +76,7 @@ license_info()
 {
   echo "utility script to extract the SQL statements for one database from an"
   echo "SQL dump of multiple databases"
-  echo "Copyright (C) 2014  Thoronador"
+  echo "Copyright (C) 2014, 2015  Dirk Stolle"
   echo
   echo "This program is free software: you can redistribute it and/or modify"
   echo "it under the terms of the GNU General Public License as published by"

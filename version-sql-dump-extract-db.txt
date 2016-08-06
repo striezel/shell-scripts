@@ -1,1 +1,1 @@
-f9e40200b8f277d57d9421199df8cc44e6d452e7  sql-dump-extract-db.sh  0.3  2015-07-09
+2fd00605890f05ef55244fcd7efd95f26dd17d70  sql-dump-extract-db.sh  0.3.1  2016-08-06

@@ -2,9 +2,9 @@
 
 #  update.sh - general update script to get the latest version of another
 #              script from GitHub by checking the repo
-#              <https://github.com/Thoronador/shell-scripts>.
+#              <https://github.com/striezel/shell-scripts>.
 #
-#  Copyright (C) 2013  Thoronador
+#  Copyright (C) 2013, 2015  Dirk Stolle
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-location_latest_base=https://raw.github.com/Thoronador/shell-scripts/master
+location_latest_base=https://raw.github.com/striezel/shell-scripts/master
 
 # error codes / exit codes
 E_DOWNLOAD_FAILED=1 # download of new version failed

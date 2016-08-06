@@ -2,11 +2,11 @@
 
 #  git-author-lines.sh - utility script to get the number of lines changed by
 #                        a given author in a git repository
-#                        version: 0.4  (2015-07-09)
+#                        version: 0.4.1  (2016-08-06)
 #                        For the most up-to-date version check
-#                        <https://github.com/Thoronador/shell-scripts>.
+#                        <https://github.com/striezel/shell-scripts>.
 #
-#  Copyright (C) 2013, 2014, 2015  Thoronador
+#  Copyright (C) 2013, 2014, 2015  Dirk Stolle
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -59,7 +59,7 @@ license_info()
 {
   echo "utility script to get the number of lines changed by a given author"
   echo " in a git repository"
-  echo "Copyright (C) 2013, 2014  Thoronador"
+  echo "Copyright (C) 2013, 2014, 2015  Dirk Stolle"
   echo
   echo "This program is free software: you can redistribute it and/or modify"
   echo "it under the terms of the GNU General Public License as published by"
