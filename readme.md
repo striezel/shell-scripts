@@ -1,5 +1,5 @@
 #shell-scripts
-![Build Status](https://travis-ci.org/Thoronador/shell-scripts.svg?branch=master)
+![Build Status](https://travis-ci.org/striezel/shell-scripts.svg?branch=master)
 
 ##General file(s):
 
