@@ -7,6 +7,8 @@ General file(s):
 
   readme.txt - this file
 
+  readme.md - the same, but with markdown syntax
+
 Script files:
 -------------
 

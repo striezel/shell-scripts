@@ -3,8 +3,8 @@
 
 ##General file(s):
 
-  readme.md  - this file
-  readme.txt - the same, but as plain text
+* readme.md  - this file
+* readme.txt - the same, but as plain text
 
 #Script files:
 
