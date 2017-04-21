@@ -1,12 +1,12 @@
-#shell-scripts
+# shell-scripts
 ![Build Status](https://travis-ci.org/striezel/shell-scripts.svg?branch=master)
 
-##General file(s):
+## General file(s):
 
 * readme.md  - this file
 * readme.txt - the same, but as plain text
 
-#Script files:
+## Script files:
 
 For every script there are two distinct files in the repository.
 Assume the script itself is named foo.sh, then the associated files
@@ -30,3 +30,20 @@ Special purpose script:
       ./update.sh foo.sh
 
   Purely optional, you won't need it very often, but it might come in useful.
+
+## Copyright and license
+
+Copyright 2013, 2014, 2015  Dirk Stolle
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
