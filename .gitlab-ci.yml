@@ -1,0 +1,12 @@
+# Use the official debian image.
+image: debian:9-slim
+
+test:
+  stage: test
+  before_script:
+    - apt-get update && apt-get install -y bash gawk grep wget
+  script:
+    - ./continuous-integration/bashlint.sh
+    - ./continuous-integration/update-check-no-op.sh
+    - ./continuous-integration/update-check-forced-update.sh
+    - echo "All tests passed. Have a nice day."
