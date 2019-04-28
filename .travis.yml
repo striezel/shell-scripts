@@ -2,6 +2,7 @@
 # Every environment should have Bash and do the trick.
 language: cpp
 sudo: false
+dist: xenial
 script:
   - ./continuous-integration/bashlint.sh
   - ./continuous-integration/update-check-no-op.sh
