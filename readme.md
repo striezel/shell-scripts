@@ -1,5 +1,7 @@
 # shell-scripts
-![Build Status](https://travis-ci.org/striezel/shell-scripts.svg?branch=master)
+
+[![GitHub CI status](https://github.com/striezel/shell-scripts/workflows/GitHub%20CI/badge.svg)](https://github.com/striezel/shell-scripts/actions)
+[![GitLab pipeline status](https://gitlab.com/striezel/shell-scripts/badges/master/pipeline.svg)](https://gitlab.com/striezel/shell-scripts/-/pipelines)
 
 ## General file(s):
 
