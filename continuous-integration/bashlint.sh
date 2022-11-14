@@ -2,7 +2,7 @@
 
 #  bashlint.sh - script to check the syntax of other Bash scripts
 #
-#  Copyright (C) 2015  Dirk Stolle
+#  Copyright (C) 2015, 2022  Dirk Stolle
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ echo
 echo
 
 # find all .sh files and run them through Bash's syntax check
-find ./ -name '*.sh' -print0 | xargs -0 -i bash -n {}
+find ./ -name '*.sh' -print0 | xargs -0 -I {} bash -n {}
 if [[ $? -ne 0 ]]
 then
   echo "Some scripts contain syntax errors!"
