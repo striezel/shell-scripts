@@ -4,7 +4,7 @@
 #              script from GitHub by checking the repo
 #              <https://github.com/striezel/shell-scripts>.
 #
-#  Copyright (C) 2013, 2015  Dirk Stolle
+#  Copyright (C) 2013, 2015, 2024  Dirk Stolle
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -157,7 +157,7 @@ update_script()
 } #update function
 
 # update requested?
-if [[ ! -z $1 ]]
+if [[ -n $1 ]]
 then
   to_up=$(basename "$1")
   update_script "$to_up"
@@ -165,6 +165,6 @@ else
   echo "Nothing do do here, you didn't specify a script file that should be updated."
   echo "If you want to update a script, type"
   echo "    ./$(basename "$0") script-file.sh"
-  echo "where script-files.sh has to be replaced by the script's name."
+  echo "where script-file.sh has to be replaced by the script's name."
 fi
 exit 0
